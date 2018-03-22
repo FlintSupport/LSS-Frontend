@@ -2302,6 +2302,23 @@ figcaption:after {
   background-color: #FFF;
 }
 /* micro site home page */
+/* leadership page */
+#leadership-sub:after {
+  clear: both;
+  content: ' ';
+  display: block;
+}
+#leadership-sub ul {
+  padding: 0;
+  margin-bottom: 40px;
+}
+#leadership-sub li {
+  list-style-type: none;
+}
+#leadership-sub h3 {
+  font-size: 26px;
+}
+/* end leadership page */
 /* Slider */
 .slick-slider {
   position: relative;
@@ -2808,6 +2825,18 @@ figcaption:after {
     left: 0;
   }
   /* end locations and therapists */
+  /* leadership page */
+  #leadership-sub .half {
+    width: 50%;
+    float: left;
+    padding-left: 15px;
+  }
+  #leadership-sub .half:nth-child(odd) {
+    clear: both;
+    padding-right: 15px;
+    padding-left: 0;
+  }
+  /* end leadership page */
 }
 @media screen and (min-width: 992px) {
   #callout {
@@ -3660,6 +3689,9 @@ figcaption:after {
     float: right;
     position: relative;
     top: -5px;
+  }
+  #bio-listing article {
+    padding-left: 408px;
   }
 }
 @media screen and (min-width: 1460px) {
