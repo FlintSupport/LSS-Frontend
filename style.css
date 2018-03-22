@@ -2219,6 +2219,32 @@ figcaption:after {
 .event-detail .event-listing iframe {
   display: none;
 }
+#event-back a {
+  position: relative;
+  padding-left: 20px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+#event-back a:before {
+  content: ' ';
+  display: inline-block;
+  background-image: url(img/sprite.png);
+  background-repeat: no-repeat;
+  background-position: -552px -294px;
+  height: 52px;
+  width: 27px;
+  -webkit-transform: scale(0.3333) rotate(180deg);
+  -moz-transform: scale(0.3333) rotate(180deg);
+  -ms-transform: scale(0.3333) rotate(180deg);
+  -o-transform: scale(0.3333) rotate(180deg);
+  transform: scale(0.3333) rotate(180deg);
+  -webkit-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  position: absolute;
+  top: 21px;
+  left: -25px;
+}
 /* end events */
 /* locations and therapists */
 #location-map iframe {
@@ -2319,6 +2345,31 @@ figcaption:after {
   font-size: 26px;
 }
 /* end leadership page */
+/* bio page */
+#main-content.bio-page .content h2 {
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+.bio-full {
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 356px;
+  height: auto;
+}
+.bio-contact {
+  margin-bottom: 0;
+}
+.bio-contact address {
+  margin-top: 40px;
+  margin-bottom: 0;
+  border-top: 1px solid #b7b7b7;
+  padding-top: 40px;
+}
+.bio-contact address h3 {
+  margin-bottom: 0;
+}
+/* end bio page */
+/* end bio page */
 /* Slider */
 .slick-slider {
   position: relative;
@@ -2837,6 +2888,12 @@ figcaption:after {
     padding-left: 0;
   }
   /* end leadership page */
+  /* bio page */
+  .bio-full {
+    float: left;
+    margin: 0 40px 20px 0;
+  }
+  /* end bio page */
 }
 @media screen and (min-width: 992px) {
   #callout {
@@ -3335,32 +3392,10 @@ figcaption:after {
     display: block;
   }
   #event-back {
-    margin: -56px 0 30px;
+    margin: -26px 0 0px;
   }
   #event-back a {
-    padding-left: 30px;
-    position: relative;
-    display: inline-block;
-  }
-  #event-back a:before {
-    content: ' ';
-    display: inline-block;
-    background-image: url(img/sprite.png);
-    background-repeat: no-repeat;
-    background-position: -552px -294px;
-    height: 52px;
-    width: 27px;
-    -webkit-transform: scale(0.3333) rotate(180deg);
-    -moz-transform: scale(0.3333) rotate(180deg);
-    -ms-transform: scale(0.3333) rotate(180deg);
-    -o-transform: scale(0.3333) rotate(180deg);
-    transform: scale(0.3333) rotate(180deg);
-    -webkit-transform-origin: 100% 0;
-    -ms-transform-origin: 100% 0;
-    transform-origin: 100% 0;
-    position: absolute;
-    top: 21px;
-    left: -15px;
+    margin-bottom: 0;
   }
   .align-right {
     text-align: right;
@@ -3656,6 +3691,11 @@ figcaption:after {
   #contact-block {
     width: 33%;
   }
+  /* event page*/
+  #event-back {
+    margin: -56px 0 20px;
+  }
+  /* end event page*/
   /*logo update*/
   #logo {
     -webkit-transform: scale(1);
