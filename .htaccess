@@ -1,0 +1,100 @@
+####### REWRITE ########
+Options +FollowSymlinks
+RewriteEngine On
+
+
+####### 404 PAGE ########
+ErrorDocument 404 /404.php
+
+####### UTF-8 ENCODING #######
+AddDefaultCharset utf-8
+AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
+
+####### HIDE HIDDEN FOLDERS AND FILES WITH .NAME #######
+RewriteCond %{SCRIPT_FILENAME} -d [OR]
+RewriteCond %{SCRIPT_FILENAME} -f
+RewriteRule "(^|/)\." - [F] 
+
+####### HIDE BACKUP AND SERVER FILES #######
+<FilesMatch "(\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
+  Order allow,deny
+  Deny from all
+  Satisfy All
+</FilesMatch>
+
+####### ADD SERVER PASSWORD #######
+#AuthName "Please enter the username and password provided to you. Contact support@flintinteractive.com for assistance." 
+#AuthType Basic 
+#AuthUserFile /home/bcbsndpr/public_html/.htpasswd 
+#AuthGroupFile /dev/null 
+#require valid-user
+
+####### WEBFONT ACCESS #######
+# Allow access from all domains for webfonts.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ttf|ttc|otf|eot|woff|font.css)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+####### SET MIME TYPES ON ALL FILES #######
+# JavaScript
+AddType application/javascript         		js jsonp
+AddType application/json               		json
+
+# Audio
+AddType audio/ogg                     		oga ogg
+AddType audio/mp4                      		m4a f4a f4b
+
+# Video
+AddType video/ogg                      		ogv
+AddType video/mp4                      		mp4 m4v f4v f4p
+AddType video/webm                     		webm
+AddType video/x-flv                    		flv
+
+# SVG
+# Required for svg webfonts on iPad
+AddType     image/svg+xml              		svg svgz
+AddEncoding gzip                       		svgz
+
+# Webfonts
+AddType application/vnd.ms-fontobject 		eot
+AddType application/x-font-ttf         		ttf ttc
+AddType font/opentype                  		otf
+AddType application/x-font-woff        		woff
+	
+# Assorted types
+AddType image/x-icon                        ico
+AddType image/webp                          webp
+AddType text/cache-manifest                 appcache manifest
+AddType text/x-component                    htc
+AddType application/xml                     rss atom xml rdf
+AddType application/x-chrome-extension      crx
+AddType application/x-opera-extension       oex
+AddType application/x-xpinstall             xpi
+AddType application/octet-stream            safariextz
+AddType application/x-web-app-manifest+json webapp
+AddType text/x-vcard                        vcf
+AddType application/x-shockwave-flash       swf
+AddType text/vtt 							vtt
+
+####### CROSS-SITE SCRIPTING SECURITY #######
+<IfModule mod_rewrite.c>
+     RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+     RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+     RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+     RewriteRule .* index.php [F,L]
+</IfModule>
+
+####### GZIP COMPRESS FILES #######
+# HTML, TXT, CSS, JavaScript, JSON, XML, HTC:
+<IfModule mod_deflate.c>
+    <IfModule mod_headers.c>
+        Header append Vary User-Agent env=!dont-vary
+    </IfModule>
+        AddOutputFilterByType DEFLATE text/css text/x-component application/x-javascript application/javascript text/javascript text/x-js text/html text/richtext image/svg+xml text/plain text/xsd text/xsl text/xml image/x-icon application/json
+    <IfModule mod_mime.c>
+        # DEFLATE by extension
+        AddOutputFilter DEFLATE js css htm html xml
+    </IfModule>
+</IfModule>
