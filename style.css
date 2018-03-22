@@ -1505,6 +1505,13 @@ aside .contact-link a.phone {
   -o-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
+#main-content.left.full-width {
+  width: 100%;
+  padding: 0 0 70px;
+}
+#main-content.left.full-width .container {
+  padding: 0 30px;
+}
 .border-btn:hover,
 #search-submit {
   background-color: #d5051a;
