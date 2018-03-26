@@ -62,14 +62,17 @@ body, html {
     background-color:#3f444a;
     padding: 10px 30px 30px;
 }
-#header nav .main-menu li.active > a{border-width:0;background-color:#3f444a;padding:15px 0 0 27px;}
-#header nav li.active .sub-nav{display: block;border-bottom: 1px solid #5a5e62;}
-#header nav .main-menu{padding: 10px 30px;}
-#header nav .main-menu a{color: #FFF;text-transform: uppercase;font-size: 19px;border-bottom: 1px solid #5a5e62;display: block;padding:13px 0;position: relative;}
-#header nav .main-menu a:focus{text-decoration: none;}
+//#header nav .main-menu li.active > a{border-width:0;background-color:#3f444a;padding:15px 0 0 27px;}
+//#header nav li.active .sub-nav{display: block;border-bottom: 1px solid #5a5e62;}
+#header nav .main-menu{padding: 10px 30px;position: relative;}
+#header nav .main-menu a,
+.cloned-menu a{color: #FFF;text-transform: uppercase;font-size: 19px;border-bottom: 1px solid #5a5e62;display: block;padding:13px 0;position: relative;}
+#header nav .main-menu a:focus,
+.cloned-menu a:focus{text-decoration: none;} 
 #header nav .main-menu .sub-nav a {border-width:0;padding: 8px 0;font-size: 17px;}
 #header nav .main-menu .sub-nav a:after{display: none;}
-#header nav .main-menu a:after{
+#header nav .main-menu a:after,
+.cloned-menu a:after{
     content:' ';
     .sprite(-374px, -235px);
     height:52px;
@@ -84,16 +87,12 @@ body, html {
             transform: scale(0.3333);
     transform-origin:100% 0;
 } 
-#header nav .main-menu .active a:after{
-    -webkit-transform: scale(0.3333) rotate(90deg);
-       -moz-transform: scale(0.3333) rotate(90deg);
-        -ms-transform: scale(0.3333) rotate(90deg);
-         -o-transform: scale(0.3333) rotate(90deg);
-            transform: scale(0.3333) rotate(90deg);
-    top: 30px; 
-}
-#header nav .main-menu li:last-child a{border-width:0;}
-#header nav .main-menu .sub-nav .sub-nav{display:none;}
+#nav-title{color: #fccd00;text-transform: uppercase;font-size: 19px;padding: 17px 30px;}
+#header nav.expand{padding-bottom: 40px;}
+#header nav.expand .main-menu,
+#header nav.expand #secondary-nav{display: none;} 
+#header nav .main-menu li:last-child a,
+#header nav .cloned-menu li:last-child a{border-width:0;}
 #header nav #secondary-nav{background-color:#3f444a;padding: 8px 30px;}
 #header nav #secondary-nav a{color: #FFF;padding: 8px 0;display: block;}
 #header nav #secondary-nav .phone{
@@ -137,6 +136,7 @@ body, html {
 .nav-active #search{display: none !important;}
 
 #mobile-toggle,
+#menu-back,
 .close-video{
     .sprite(0, -519px);
     height: 70px;
@@ -155,7 +155,20 @@ body, html {
 }
 .close-video{background-position:-107px -519px;left: auto;right: -26px;top: 10%;} 
 #mobile-toggle:hover,
-.close-video:hover{cursor:pointer;}
+.close-video:hover,
+#menu-back:hover{cursor:pointer;}
+#menu-back{
+    left: 30px;
+    right: auto;
+    top: 25px;
+    background-position: -138px -236px;
+    -webkit-transform: scale(.7);
+       -moz-transform: scale(.7);
+        -ms-transform: scale(.7);
+         -o-transform: scale(.7);
+            transform: scale(.7);
+    display: none;
+}
 #search-toggle{
     .sprite(-440px, -331px);
     height: 70px; 

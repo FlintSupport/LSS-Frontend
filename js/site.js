@@ -8,16 +8,49 @@ jQuery(document).ready(function(){
 			jQuery('.mobile-logo-inverted').hide();
 			jQuery('.mobile-logo').show();
 		}
-	});
-	jQuery('#header nav>ul>li>a').on('click touch', function(){
+		if(!jQuery('body').hasClass('nav-active')) {
+			jQuery('#header nav > .sub-nav, #nav-title').remove();
+			jQuery('#header nav').attr('data-menu-level', '').removeClass('expand');
+		}
+	}); 
+	jQuery('#header nav').on('click touch', 'a', function(){
 		if(jQuery('#mobile-toggle').is(':visible')) {
-			var checkSub = jQuery(this).closest('li').find('.sub-nav');
+			var currentClick = jQuery(this);
+			var currentLi = currentClick.closest('li');
+			var checkSub = currentLi.find('> .sub-nav').clone();
 			if(checkSub.length!==0){
-				jQuery(this).closest('li').toggleClass('active');
-				return false; 
+				var currentClickText = currentClick.text();
+				var currentLevel = parseInt(jQuery('#header nav').attr('data-menu-level'));
+				if(currentLevel){
+					jQuery('#header nav').attr('data-menu-level', currentLevel+1);
+				} else{
+					jQuery('#header nav').attr('data-menu-level', 1).addClass('expand');					
+				} 	
+				//hide on menu advance
+				jQuery('#header nav > .sub-nav, #nav-title').hide(); 
+				//setup title
+				jQuery('.main-menu').before('<div id="nav-title" class="menu-level-'+jQuery('#header nav').attr('data-menu-level')+'">'+currentClickText+'</div>'); 
+				jQuery(checkSub).addClass('menu-level-'+jQuery('#header nav').attr('data-menu-level')).addClass('cloned-menu').show();
+				jQuery('.main-menu').before(checkSub);
+				jQuery('#menu-back').show();
+				return false;  
 			}
 		} 
 	});	
+	jQuery('#menu-back').on('click touch', function(){
+		currentLevel = parseInt(jQuery('#header nav').attr('data-menu-level'));
+		prevLevel= currentLevel - 1;
+		if(prevLevel != 0) {
+			jQuery('#header nav').attr('data-menu-level',prevLevel);
+			jQuery('.menu-level-'+currentLevel).remove();
+			jQuery('.menu-level-'+prevLevel).show();
+		} else{
+			jQuery('#header nav').attr('data-menu-level','');
+			jQuery('#menu-back').hide();
+			jQuery('#header nav').removeClass('expand');
+			jQuery('.cloned-menu, #nav-title').remove();
+		}	
+	});
 	jQuery('#search-submit').on('click touch', function() {
 		if(jQuery('#search input[name="s"]').val().length>2){
 			jQuery('#search').submit();

@@ -1,7 +1,10 @@
 @media screen and (min-width: 1200px){
 	#mobile-toggle,
+	#menu-back,
 	#header:before, 
-	#header:after{display: none;} 
+	#header:after,
+	#nav-title,
+	.cloned-menu{display: none !important;} 
 	#header{height: 124px;border-bottom: 15px solid #ededee;box-sizing:border-box;}
 	#logo{
 		-webkit-transform: scale(0.5);
@@ -12,6 +15,9 @@
 		left: 15px;
 		margin-left: 0;
 	}
+	#header nav .main-menu,
+	#header nav #secondary-nav{display: block !important;}
+	#header nav .main-menu .sub-nav .sub-nav{display:none;}
 	#header nav #secondary-nav{min-width:800px;text-align: right;}
 	#header nav #secondary-nav .donate-btn{text-align: right;background-color:#db0f25;color: #FFF;padding: 5px 30px;margin-left: 25px;}
 	#header nav{display: block !important;top: 0;right: 0;background-color:transparent;width: auto;padding:37px 55px 0 0;}
